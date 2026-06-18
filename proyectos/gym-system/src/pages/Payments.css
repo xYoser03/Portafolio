@@ -1,0 +1,172 @@
+.payments-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.payments-header .page-title { font-size: 2rem; margin-bottom: 0.25rem; }
+.payments-header .page-subtitle { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* Summary Cards */
+.pay-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.pay-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.pay-summary-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.summary-value {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.summary-income {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.summary-debt {
+  background: rgba(255, 51, 102, 0.08);
+  border-color: rgba(255, 51, 102, 0.2);
+  color: var(--accent-secondary);
+}
+
+.summary-warning {
+  background: rgba(250, 204, 21, 0.08);
+  border-color: rgba(250, 204, 21, 0.2);
+  color: #facc15;
+}
+
+/* Toolbar (reutiliza estilos de Members) */
+.pay-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  gap: 1rem;
+}
+
+/* Table */
+.pay-table-container {
+  padding: 0;
+  overflow: hidden;
+}
+
+.pay-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pay-table thead { background: var(--bg-tertiary); }
+
+.pay-table th {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pay-table td {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.pay-table tbody tr { transition: var(--transition); }
+.pay-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+.pay-table tbody tr:last-child td { border-bottom: none; }
+
+.pay-member-name { font-weight: 600; }
+
+.pay-amount {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.pay-method {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.pay-date {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.pay-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pay-status-paid {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+}
+
+.pay-status-warning {
+  background: rgba(250, 204, 21, 0.12);
+  color: #facc15;
+}
+
+.pay-status-expired {
+  background: rgba(255, 51, 102, 0.12);
+  color: var(--accent-secondary);
+}
+
+/* Plan badges (duplicate-safe) */
+.plan-badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.plan-mensual { background: rgba(99,102,241,0.15); color: #818cf8; }
+.plan-trimestral { background: rgba(14,165,233,0.15); color: #38bdf8; }
+.plan-vip { background: rgba(212,255,0,0.12); color: var(--accent-primary); }
+
+@media (max-width: 768px) {
+  .pay-summary { grid-template-columns: 1fr; }
+  .pay-toolbar { flex-direction: column; }
+}

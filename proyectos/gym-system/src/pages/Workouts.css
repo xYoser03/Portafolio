@@ -1,0 +1,355 @@
+.workouts-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.workouts-header .page-title { font-size: 2rem; margin-bottom: 0.25rem; }
+.workouts-header .page-subtitle { color: var(--text-secondary); font-size: 0.9rem; }
+
+.workouts-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: var(--accent-primary);
+}
+
+/* Routines Accordion */
+.routines-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.routine-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.routine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-secondary);
+}
+
+.routine-header:hover {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+}
+
+.routine-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.routine-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.routine-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.routine-days {
+  border-top: 1px solid var(--border-color);
+}
+
+.routine-day {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.routine-day:last-child { border-bottom: none; }
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.day-header:hover {
+  background: rgba(212, 255, 0, 0.03);
+}
+
+.day-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+}
+
+.day-exercises-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Exercises Table */
+.exercises-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exercises-table th {
+  text-align: left;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-tertiary);
+}
+
+.exercises-table td {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.exercises-table tbody tr:last-child td { border-bottom: none; }
+
+.exercise-name { font-weight: 500; }
+.exercise-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+/* Progress Panel */
+.progress-panel {
+  padding: 1.5rem;
+  position: sticky;
+  top: 80px;
+}
+
+.progress-member-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-member-select label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-member-select select {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 2.5rem;
+  transition: var(--transition);
+}
+
+.progress-member-select select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(212, 255, 0, 0.1);
+}
+
+.progress-member-select select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Progress Summary */
+.progress-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  color: var(--accent-primary);
+}
+
+.progress-stat div {
+  display: flex;
+  flex-direction: column;
+}
+
+.prog-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.prog-value {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.prog-diff {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.prog-good { color: #4ade80; }
+.prog-bad { color: var(--accent-secondary); }
+
+/* Timeline */
+.progress-timeline {
+  margin-bottom: 1.5rem;
+}
+
+.progress-timeline h4, .progress-chart h4 {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.timeline-entry:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 22px;
+  bottom: -6px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.timeline-values {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Simple Horizontal Bar Chart */
+.weight-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.weight-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weight-bar-label {
+  width: 48px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.weight-bar-track {
+  flex: 1;
+  height: 16px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.weight-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), rgba(212, 255, 0, 0.5));
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.weight-bar-value {
+  width: 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Empty State */
+.progress-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.progress-empty p {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .workouts-layout { grid-template-columns: 1fr; }
+  .progress-panel { position: static; }
+}
