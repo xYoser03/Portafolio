@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Yoser Araya Duarte</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e11;
+    --paper: #f5f3ef;
+    --accent: #c8ff00;
+    --accent2: #ff3b6b;
+    --muted: #9a9690;
+    --line: #d8d4cc;
+    --tag-bg: #e8e4dc;
+  }
+
+  body {
+    font-family: 'DM Mono', monospace;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* PAGE LAYOUT */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px;
+  }
+
+  /* HEADER */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -48px; right: -48px;
+    height: 8px;
+    background: var(--ink);
+  }
+
+  .name-block h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+  }
+
+  .name-block h1 span {
+    display: block;
+    color: var(--muted);
+  }
+
+  .title-pill {
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--ink);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    text-transform: uppercase;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .contact-block a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .contact-block a:hover { color: var(--accent2); }
+
+  /* SECTION */
+  section { margin-bottom: 48px; }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 15px;
+    line-height: 1.75;
+    max-width: 640px;
+    color: #2a2a30;
+  }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .skill-group {
+    background: white;
+    padding: 20px;
+    border: 1px solid var(--line);
+  }
+
+  .skill-group:first-child { background: var(--ink); color: var(--paper); }
+  .skill-group:first-child .skill-group-title { color: var(--accent); }
+  .skill-group:first-child .tag { background: #2a2a2e; color: #ccc; border-color: #3a3a3e; }
+
+  .skill-group-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--muted);
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    letter-spacing: 0.03em;
+  }
+
+  .tag.hot { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+
+  /* PROJECTS */
+  .project-card {
+    border: 1px solid var(--line);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .project-card:last-child { margin-bottom: 0; }
+
+  .project-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--line);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .project-title-group {}
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .project-subtitle {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .project-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 5px 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    white-space: nowrap;
+  }
+
+  .badge-saas { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+  .badge-erp { background: var(--accent2); color: white; border-color: var(--accent2); }
+
+  .project-body {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #3a3a42;
+  }
+
+  .project-highlights {}
+
+  .highlight-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .highlight-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .highlight-list li {
+    font-size: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    color: #2a2a30;
+  }
+
+  .highlight-list li::before {
+    content: '→';
+    color: var(--accent2);
+    flex-shrink: 0;
+    font-size: 11px;
+  }
+
+  .project-stack {
+    padding: 14px 24px;
+    background: var(--tag-bg);
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .stack-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+
+  .stack-tag {
+    font-size: 11px;
+    padding: 2px 9px;
+    background: white;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  /* ARCHITECTURE SECTION */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .arch-item {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 16px;
+  }
+
+  .arch-layer {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+
+  .arch-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .arch-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 2px;
+  }
+
+  .footer-tag {
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 10px;
+    padding: 4px 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-tag.green { background: var(--accent); color: var(--ink); }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { padding: 40px 40px; }
+    .header::before { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 32px 20px; }
+    .name-block h1 { font-size: 40px; }
+    .header { grid-template-columns: 1fr; }
+    .contact-block { text-align: left; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .project-body { grid-template-columns: 1fr; }
+    .arch-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="name-block">
+      <h1>Yoser<span>Araya</span></h1>
+      <div class="title-pill">React · Node.js · .NET · SQL</div>
+    </div>
+    <div class="contact-block">
+      <div>📍 Costa Rica</div>
+      <div><a href="https://github.com/xYoser03" target="_blank">github.com/xYoser03</a></div>
+      <div><a href="mailto:yoserad@gmail.com">yoserad@gmail.com</a></div>
+      <div><a href="https://www.linkedin.com/in/yoser-araya-888034402/" target="_blank">linkedin.com/in/yoser-araya</a></div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="section-label">Perfil</div>
+    <p class="about-text">
+      Desarrollador Full Stack con experiencia en la construcción de sistemas empresariales de alto impacto. 
+      Especializado en arquitecturas modernas —<strong>Clean Architecture</strong>, <strong>CQRS</strong> y diseño <strong>REST API</strong>— 
+      y en la creación de interfaces de usuario premium con React y Blazor. 
+      Orientado a código limpio, escalable y mantenible, con fuerte dominio tanto del frontend como del backend.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-label">Stack Tecnológico</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Frontend</div>
+        <div class="tags">
+          <span class="tag hot">React 19</span>
+          <span class="tag hot">Blazor WASM</span>
+          <span class="tag">Vite</span>
+          <span class="tag">React Router</span>
+          <span class="tag">MudBlazor</span>
+          <span class="tag">CSS / Glassmorphism</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Backend</div>
+        <div class="tags">
+          <span class="tag hot">.NET 10 / C# 13</span>
+          <span class="tag hot">Node.js / Express</span>
+          <span class="tag">MediatR (CQRS)</span>
+          <span class="tag">EF Core</span>
+          <span class="tag">JWT + Refresh Tokens</span>
+          <span class="tag">AutoMapper</span>
+          <span class="tag">BCrypt</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">DB & Herramientas</div>
+        <div class="tags">
+          <span class="tag hot">SQL Server</span>
+          <span class="tag hot">MySQL</span>
+          <span class="tag">Entity Framework Core</span>
+          <span class="tag">Swagger / OpenAPI</span>
+          <span class="tag">Git & GitHub</span>
+          <span class="tag">REST API Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <div class="section-label">Proyectos Destacados</div>
+
+    <!-- GymX -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-num">01</div>
+        <div class="project-title-group">
+          <div class="project-name">GymX — Sistema de Gestión de Gimnasio</div>
+          <div class="project-subtitle">Plataforma SaaS Full Stack · React 19 + Node.js/Express + MySQL</div>
+        </div>
+        <div class="project-badge badge-saas">SaaS</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Sistema integral para la administración de gimnasios con diseño <em>Dark &amp; Neon</em> premium. 
+          Cubre el ciclo completo de operación: registro de miembros, cobros y suscripciones, 
+          punto de venta con control de inventario, check-in con validación en tiempo real 
+          y seguimiento de progreso físico. Arquitectura modular escalable tipo SaaS con 
+          backend REST API y base de datos relacional con 9 tablas e integridad referencial.
+        </div>
+        <div class="project-highlights">
+          <div class="highlight-title">Logros Técnicos</div>
+          <ul class="highlight-list">
+            <li>Dashboard con KPIs en tiempo real y gráficos de asistencia</li>
+            <li>Check-in con feedback visual inmediato optimizado para tablets</li>
+            <li>POS integrado con actualización automática de stock</li>
+            <li>Estados dinámicos de membresía: Activo / Por vencer / Vencido</li>
+            <li>Diseño UI/UX premium: glassmorphism + micro-animaciones CSS</li>
+            <li>Calendario semanal de clases con inscripción de miembros</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-label">Stack</span>
+        <span class="stack-tag">React 19</span>
+        <span class="stack-tag">Vite 8</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">Express 4</span>
+        <span class="stack-tag">MySQL / InnoDB</span>
+        <span class="stack-tag">React Router v7</span>
+        <span class="stack-tag">Lucide React</span>
+        <span class="stack-tag">CSS Puro</span>
+        <span class="stack-tag">REST API</span>
+      </div>
+    </div>
+
+    <!-- RhSys -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-num">02</div>
+        <div class="project-title-group">
+          <div class="project-name">RhSys — ERP de RRHH y Nóminas</div>
+          <div class="project-subtitle">Sistema Empresarial · .NET 10 + Blazor WASM + SQL Server</div>
+        </div>
+        <div class="project-badge badge-erp">Enterprise ERP</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          ERP empresarial de alto nivel para la gestión de Recursos Humanos y cálculo de nóminas, 
+          construido sobre <strong>Clean Architecture</strong> con separación estricta de capas. 
+          Implementa patrones de la industria: CQRS con MediatR, Repositorio, DTOs con AutoMapper, 
+          Soft Delete con EF Global Query Filters, autenticación JWT con Refresh Tokens y 
+          manejo centralizado de excepciones. Frontend SPA desacoplado en Blazor WebAssembly 
+          con UI profesional Mobile-First usando MudBlazor.
+        </div>
+        <div class="project-highlights">
+          <div class="highlight-title">Patrones Implementados</div>
+          <ul class="highlight-list">
+            <li>Clean Architecture: Domain → Application → Infrastructure → API</li>
+            <li>CQRS con MediatR: comandos y queries desacoplados</li>
+            <li>JWT + Refresh Token Rotation con HttpInterceptor global</li>
+            <li>Soft Delete vía EF Core Global Query Filters</li>
+            <li>Global Exception Middleware con ProblemDetails estándar</li>
+            <li>AutoMapper + DTOs: sin over-posting ni fuga de datos</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-label">Stack</span>
+        <span class="stack-tag">.NET 10</span>
+        <span class="stack-tag">C# 13</span>
+        <span class="stack-tag">Blazor WASM</span>
+        <span class="stack-tag">MudBlazor</span>
+        <span class="stack-tag">SQL Server</span>
+        <span class="stack-tag">EF Core</span>
+        <span class="stack-tag">MediatR</span>
+        <span class="stack-tag">AutoMapper</span>
+        <span class="stack-tag">BCrypt.Net</span>
+        <span class="stack-tag">Swagger</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLEAN ARCHITECTURE CALLOUT -->
+  <section>
+    <div class="section-label">Arquitectura — RhSys Clean Architecture</div>
+    <div class="arch-grid">
+      <div class="arch-item">
+        <div class="arch-layer">Core</div>
+        <div class="arch-name">Domain</div>
+        <div class="arch-desc">Entidades, Enums y Excepciones de negocio. Cero dependencias externas.</div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-layer">Casos de Uso</div>
+        <div class="arch-name">Application</div>
+        <div class="arch-desc">CQRS con MediatR, DTOs, interfaces y mapeos con AutoMapper.</div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-layer">Tecnología</div>
+        <div class="arch-name">Infrastructure</div>
+        <div class="arch-desc">EF Core, DbContext, Repositorio, BCrypt Auth y persistencia.</div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-layer">Presentación</div>
+        <div class="arch-name">API + SPA</div>
+        <div class="arch-desc">Controladores limpios, Middlewares, DI, Swagger y Blazor WASM.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">Disponible para oportunidades full-time o freelance · 2025</div>
+    <div class="footer-right">
+      <div class="footer-tag">Open to Work</div>
+      <div class="footer-tag green">Full Stack</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
