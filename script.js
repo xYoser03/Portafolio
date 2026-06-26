@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
       tag: 'Usuarios',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
-      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+      desc: 'Métricas clave: Cuatro tarjetas superiores con el resumen de membresías: 10 socios totales, 7 activos, 1 por vencer y 2 vencidos. Filtros y búsqueda: Un buscador rápido por nombre o email, junto con pestañas para filtrar la lista según el estado de la membresía (Todos, Activo, Por vencer, Vencido). Listado de socios: Una tabla detallada que muestra el nombre y correo del miembro, tipo de plan (VIP, Mensual, Trimestral), estado de su cuenta, fecha de vencimiento y el historial de asistencias (visitas). Acciones: Un botón destacado en verde limón para registrar un "Nuevo Miembro".'
     },
     {
       src: './ImgGym/gym2.png',
