@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Scroll Reveal (IntersectionObserver) ─────────
   const revealElements = document.querySelectorAll('.reveal');
-  
+
   if (revealElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Navbar scroll effect ─────────────────────────
   const navbar = document.querySelector('.navbar');
-  
+
   if (navbar) {
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.scrollY;
-      
+
       if (currentScroll > 50) {
         navbar.classList.add('scrolled');
       } else {
@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
       if (targetId === '#') return;
-      
+
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
-        
+
         // Close mobile menu if open
         const navLinksContainer = document.querySelector('.nav-links');
         if (navLinksContainer) {
@@ -92,11 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navToggle && navLinksContainer) {
     navToggle.addEventListener('click', () => {
       navLinksContainer.classList.toggle('open');
-      
+
       // Toggle icon between menu and X
       const menuIcon = navToggle.querySelector('.icon-menu');
       const closeIcon = navToggle.querySelector('.icon-close');
-      
+
       if (menuIcon && closeIcon) {
         const isOpen = navLinksContainer.classList.contains('open');
         menuIcon.style.display = isOpen ? 'none' : 'block';
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initStars() {
       // Dynamic star count based on window size
       const starCount = Math.floor((width * height) / 9000);
-      
+
       if (stars.length === 0) {
         for (let i = 0; i < starCount; i++) {
           stars.push(createStar());
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.scale(dpr, dpr);
-      
+
       initStars();
     }
 
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Parallax offset relative to scroll position
         // Larger stars move faster to simulate depth
         const parallaxFactor = star.size * 0.12;
-        
+
         let renderX = star.x;
         let renderY = star.y - (currentScrollY * parallaxFactor);
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
       tag: 'Rutinas y progreso de los miembros',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
-      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+      desc: 'Muestra los planes de entrenamiento de los miembros. Se observa desplegada la "Rutina Full Body - Principiante" de la socia Ana Gómez (asignada por el Coach Diego), detallando los ejercicios del lunes (series, repeticiones y descansos), como press de banca, jalón al pecho y press militar.'
     },
     {
       src: './ImgGym/gym3.png',
@@ -328,20 +328,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
       tag: 'Punto de venta',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
-      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+      desc: 'Una lista con artículos disponibles como bebidas, suplementos, snacks y accesorios (ej. agua, proteína, barra energética, toalla).Un panel a la derecha que muestra un carrito de compras con 1 barra energética seleccionada por un precio de $30. Un botón verde llamativo que indica "Cobrar $30" para finalizar la transacción de manera directa.'
     }
   ];
 
   // ── DOM references ─────────────────────────────────
-  const overlay        = document.getElementById('gymx-modal');
-  const openBtn        = document.getElementById('gymx-showcase-btn');
-  const closeBtn       = document.getElementById('gymx-modal-close');
-  const viewport       = document.getElementById('gymx-gallery-viewport');
-  const captionEl      = document.getElementById('gymx-caption');
-  const thumbnailsEl   = document.getElementById('gymx-thumbnails');
-  const countEl        = document.getElementById('gymx-gallery-count');
-  const prevBtn        = document.getElementById('gymx-prev');
-  const nextBtn        = document.getElementById('gymx-next');
+  const overlay = document.getElementById('gymx-modal');
+  const openBtn = document.getElementById('gymx-showcase-btn');
+  const closeBtn = document.getElementById('gymx-modal-close');
+  const viewport = document.getElementById('gymx-gallery-viewport');
+  const captionEl = document.getElementById('gymx-caption');
+  const thumbnailsEl = document.getElementById('gymx-thumbnails');
+  const countEl = document.getElementById('gymx-gallery-count');
+  const prevBtn = document.getElementById('gymx-prev');
+  const nextBtn = document.getElementById('gymx-next');
 
   if (!overlay || !openBtn) return; // Safety guard
 
@@ -356,8 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
     GYMX_IMAGES.forEach((img, i) => {
       // Main viewport image
       const el = document.createElement('img');
-      el.src   = img.src;
-      el.alt   = img.alt;
+      el.src = img.src;
+      el.alt = img.alt;
       el.draggable = false;
       if (i === 0) el.classList.add('active');
       viewport.appendChild(el);
@@ -385,8 +385,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Navigate to a specific index ──────────────────
   function goTo(index) {
-    const images    = viewport.querySelectorAll('img');
-    const thumbs    = thumbnailsEl.querySelectorAll('.gymx-thumb');
+    const images = viewport.querySelectorAll('img');
+    const thumbs = thumbnailsEl.querySelectorAll('.gymx-thumb');
 
     // Deactivate current
     images[currentIndex]?.classList.remove('active');
