@@ -302,15 +302,15 @@ document.addEventListener('DOMContentLoaded', () => {
       src: './ImgGym/gymX.png',
       alt: 'GymX — Vista general',
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
-      tag: 'Vista General',
+      tag: 'Dashboard Principal',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
-      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+      desc: 'Panel de Navegación Lateral (Menú Principal). A la izquierda de la pantalla se encuentra el acceso a las diferentes secciones del software de administración del gimnasio: Dashboard, Miembros, Cobros, Check-in, Clases, Rutinas y Ajustes. La opción Punto de Venta se encuentra resaltada en color verde limón, indicando la sección activa.'
     },
     {
       src: './ImgGym/gym1.png',
       alt: 'GymX — Pantalla 1',
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
-      tag: 'Feature 1',
+      tag: 'Usuarios',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
       desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
     },
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       src: './ImgGym/gym2.png',
       alt: 'GymX — Pantalla 2',
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
-      tag: 'Feature 2',
+      tag: 'Rutinas y progreso de los miembros',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
       desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
     },
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
       src: './ImgGym/gym3.png',
       alt: 'GymX — Pantalla 3',
       // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
-      tag: 'Feature 3',
+      tag: 'Punto de venta',
       // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
       desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
     }
