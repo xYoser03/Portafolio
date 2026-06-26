@@ -1338,3 +1338,490 @@ section {
     min-width: unset;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   GYMX SHOWCASE — Trigger Button
+   ═══════════════════════════════════════════════════ */
+
+.project-showcase-trigger {
+  padding: 16px 32px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-showcase {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 10px 22px;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.07);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast),
+    border-color var(--duration-fast),
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast);
+}
+
+.btn-showcase svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.btn-showcase:hover {
+  background: rgba(var(--accent-rgb), 0.14);
+  border-color: rgba(var(--accent-rgb), 0.55);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.12);
+  transform: translateY(-1px);
+}
+
+.btn-showcase:active {
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════
+   GYMX SHOWCASE — Modal Overlay
+   ═══════════════════════════════════════════════════ */
+
+.gymx-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  /* Entry animation */
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+/* hidden = not visible; use JS to add/remove the 'hidden' attribute */
+.gymx-modal-overlay[hidden] {
+  display: none !important;
+}
+
+.gymx-modal-overlay.is-open {
+  opacity: 1;
+}
+
+/* ── Modal Container ─────────────────────────────── */
+.gymx-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(var(--accent-rgb), 0.08),
+    0 0 60px rgba(var(--accent-rgb), 0.04);
+  /* Entry animation */
+  transform: translateY(24px) scale(0.97);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    opacity var(--duration-normal) var(--ease-out);
+  opacity: 0;
+}
+
+.gymx-modal-overlay.is-open .gymx-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ── Modal Header ────────────────────────────────── */
+.gymx-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--accent-rgb), 0.04) 0%,
+    transparent 100%
+  );
+}
+
+.gymx-modal-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gymx-modal-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 12px;
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.gymx-modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.gymx-modal-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.gymx-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-left: 16px;
+  transition:
+    color var(--duration-fast),
+    background var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+.gymx-modal-close:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-strong);
+}
+
+.gymx-modal-close svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+/* ── Modal Body ──────────────────────────────────── */
+.gymx-modal-body {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.gymx-modal-body::-webkit-scrollbar {
+  width: 4px;
+}
+.gymx-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gymx-modal-body::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+/* ── Overview Strip ──────────────────────────────── */
+.gymx-overview {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gymx-overview-text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 720px;
+}
+
+.gymx-overview-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.gymx-overview-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gymx-stack-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  background: rgba(var(--accent-rgb), 0.07);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* ── Gallery Section ─────────────────────────────── */
+.gymx-gallery-section {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gymx-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gymx-gallery-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.gymx-gallery-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* ── Main Image Viewer ───────────────────────────── */
+.gymx-gallery-main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gymx-gallery-viewport {
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Each slide image */
+.gymx-gallery-viewport img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  transform: scale(1.02);
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+  pointer-events: none;
+}
+
+.gymx-gallery-viewport img.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ── Navigation Arrows ───────────────────────────── */
+.gymx-gallery-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition:
+    color var(--duration-fast),
+    background var(--duration-fast),
+    border-color var(--duration-fast),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+.gymx-gallery-nav:hover {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+  border-color: rgba(var(--accent-rgb), 0.3);
+  transform: scale(1.08);
+}
+
+.gymx-gallery-nav:active {
+  transform: scale(0.95);
+}
+
+.gymx-gallery-nav svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+/* ── Caption ─────────────────────────────────────── */
+.gymx-caption {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  min-height: 72px;
+  transition: opacity var(--duration-fast);
+}
+
+.gymx-caption-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.gymx-caption-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ── Thumbnail Strip ─────────────────────────────── */
+.gymx-thumbnails {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gymx-thumb {
+  width: 80px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    border-color var(--duration-fast),
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast);
+  background: var(--bg-surface);
+}
+
+.gymx-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.gymx-thumb:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gymx-thumb:hover img {
+  transform: scale(1.06);
+}
+
+.gymx-thumb.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+}
+
+/* ── Responsive adjustments ──────────────────────── */
+@media (max-width: 768px) {
+  .gymx-modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .gymx-modal {
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .gymx-modal-header {
+    padding: 20px 20px 16px;
+  }
+
+  .gymx-gallery-section,
+  .gymx-overview {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .gymx-gallery-nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  .gymx-gallery-nav svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .gymx-thumb {
+    width: 60px;
+  }
+
+  .project-showcase-trigger {
+    padding: 14px 24px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gymx-modal-title {
+    font-size: 26px;
+  }
+
+  .gymx-gallery-nav {
+    display: none; /* arrows hidden on very small screens — swipe/thumb nav used */
+  }
+
+  .gymx-thumb {
+    width: 52px;
+  }
+}

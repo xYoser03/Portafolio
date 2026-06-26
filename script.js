@@ -283,4 +283,192 @@ document.addEventListener('DOMContentLoaded', () => {
     animate();
   }
 
+  // ═══════════════════════════════════════════════════
+  // GYMX SHOWCASE MODAL
+  // ═══════════════════════════════════════════════════
+
+  /**
+   * GymX image data.
+   * ─────────────────────────────────────────────────
+   * Para cada imagen, edita los campos:
+   *   · "tag"  → Título corto de la pantalla/feature (ej: "Dashboard Principal")
+   *   · "desc" → Tu descripción detallada de lo que se muestra en la imagen.
+   *              Puedes escribir lo que quieras aquí: tecnologías usadas, decisiones
+   *              de diseño, flujo del usuario, retos técnicos resueltos, etc.
+   * ─────────────────────────────────────────────────
+   */
+  const GYMX_IMAGES = [
+    {
+      src: './ImgGym/gymX.png',
+      alt: 'GymX — Vista general',
+      // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
+      tag: 'Vista General',
+      // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
+      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+    },
+    {
+      src: './ImgGym/gym1.png',
+      alt: 'GymX — Pantalla 1',
+      // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
+      tag: 'Feature 1',
+      // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
+      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+    },
+    {
+      src: './ImgGym/gym2.png',
+      alt: 'GymX — Pantalla 2',
+      // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
+      tag: 'Feature 2',
+      // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
+      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+    },
+    {
+      src: './ImgGym/gym3.png',
+      alt: 'GymX — Pantalla 3',
+      // ✏️ EDITA AQUÍ — Tag: etiqueta corta de la pantalla mostrada
+      tag: 'Feature 3',
+      // ✏️ EDITA AQUÍ — Descripción detallada de esta imagen
+      desc: 'Escribe aquí tu descripción para esta imagen. Explica qué pantalla es, qué tecnologías se usan, las decisiones de diseño o cualquier detalle que quieras destacar.'
+    }
+  ];
+
+  // ── DOM references ─────────────────────────────────
+  const overlay        = document.getElementById('gymx-modal');
+  const openBtn        = document.getElementById('gymx-showcase-btn');
+  const closeBtn       = document.getElementById('gymx-modal-close');
+  const viewport       = document.getElementById('gymx-gallery-viewport');
+  const captionEl      = document.getElementById('gymx-caption');
+  const thumbnailsEl   = document.getElementById('gymx-thumbnails');
+  const countEl        = document.getElementById('gymx-gallery-count');
+  const prevBtn        = document.getElementById('gymx-prev');
+  const nextBtn        = document.getElementById('gymx-next');
+
+  if (!overlay || !openBtn) return; // Safety guard
+
+  let currentIndex = 0;
+
+  // ── Build gallery DOM ──────────────────────────────
+  function buildGallery() {
+    // Clear any previous renders (in case of hot reload)
+    viewport.innerHTML = '';
+    thumbnailsEl.innerHTML = '';
+
+    GYMX_IMAGES.forEach((img, i) => {
+      // Main viewport image
+      const el = document.createElement('img');
+      el.src   = img.src;
+      el.alt   = img.alt;
+      el.draggable = false;
+      if (i === 0) el.classList.add('active');
+      viewport.appendChild(el);
+
+      // Thumbnail
+      const thumb = document.createElement('button');
+      thumb.className = 'gymx-thumb' + (i === 0 ? ' active' : '');
+      thumb.setAttribute('role', 'tab');
+      thumb.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      thumb.setAttribute('aria-label', `Ver imagen ${i + 1}: ${img.tag}`);
+      thumb.setAttribute('data-index', i);
+
+      const thumbImg = document.createElement('img');
+      thumbImg.src = img.src;
+      thumbImg.alt = img.alt;
+      thumb.appendChild(thumbImg);
+
+      thumb.addEventListener('click', () => goTo(i));
+      thumbnailsEl.appendChild(thumb);
+    });
+
+    renderCaption(0);
+    updateCount(0);
+  }
+
+  // ── Navigate to a specific index ──────────────────
+  function goTo(index) {
+    const images    = viewport.querySelectorAll('img');
+    const thumbs    = thumbnailsEl.querySelectorAll('.gymx-thumb');
+
+    // Deactivate current
+    images[currentIndex]?.classList.remove('active');
+    thumbs[currentIndex]?.classList.remove('active');
+    thumbs[currentIndex]?.setAttribute('aria-selected', 'false');
+
+    // Activate new
+    currentIndex = (index + GYMX_IMAGES.length) % GYMX_IMAGES.length;
+    images[currentIndex]?.classList.add('active');
+    thumbs[currentIndex]?.classList.add('active');
+    thumbs[currentIndex]?.setAttribute('aria-selected', 'true');
+
+    renderCaption(currentIndex);
+    updateCount(currentIndex);
+  }
+
+  function renderCaption(i) {
+    const { tag, desc } = GYMX_IMAGES[i];
+    captionEl.innerHTML = `
+      <div class="gymx-caption-tag">${tag}</div>
+      <p class="gymx-caption-text">${desc}</p>
+    `;
+  }
+
+  function updateCount(i) {
+    countEl.textContent = `${i + 1} / ${GYMX_IMAGES.length}`;
+  }
+
+  // ── Open / Close ───────────────────────────────────
+  function openModal() {
+    buildGallery();
+    overlay.removeAttribute('hidden');
+    // Delay to trigger CSS transition
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.classList.add('is-open');
+      });
+    });
+    document.body.style.overflow = 'hidden'; // lock scroll
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    overlay.addEventListener('transitionend', () => {
+      overlay.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      openBtn.focus(); // return focus to trigger
+    }, { once: true });
+  }
+
+  // ── Event listeners ────────────────────────────────
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  // Close on overlay background click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (overlay.hasAttribute('hidden')) return;
+
+    switch (e.key) {
+      case 'Escape':
+        closeModal();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        goTo(currentIndex - 1);
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        goTo(currentIndex + 1);
+        break;
+    }
+  });
+
+  // Prev / Next arrow buttons
+  prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+  nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+
 });
+

@@ -222,7 +222,7 @@
         <div class="projects-list">
           
           <!-- GymX -->
-          <div class="project-card reveal">
+          <div class="project-card reveal" id="gymx-card">
             <div class="project-top">
               <div class="project-top-left">
                 <div class="project-num">01</div>
@@ -264,6 +264,13 @@
               <span class="stack-tag">Lucide React</span>
               <span class="stack-tag">CSS Puro</span>
               <span class="stack-tag">REST API</span>
+            </div>
+            <!-- Trigger button for the GymX showcase modal -->
+            <div class="project-showcase-trigger">
+              <button class="btn-showcase" id="gymx-showcase-btn" aria-haspopup="dialog" aria-controls="gymx-modal">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Ver Showcase
+              </button>
             </div>
           </div>
 
@@ -549,6 +556,81 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══ GYMX SHOWCASE MODAL ═══ -->
+  <div class="gymx-modal-overlay" id="gymx-modal" role="dialog" aria-modal="true" aria-labelledby="gymx-modal-title" hidden>
+    <div class="gymx-modal" role="document">
+
+      <!-- Modal Header -->
+      <div class="gymx-modal-header">
+        <div class="gymx-modal-header-left">
+          <div class="gymx-modal-badge">SaaS · Full Stack</div>
+          <h2 class="gymx-modal-title" id="gymx-modal-title">GymX</h2>
+          <p class="gymx-modal-subtitle">Sistema de Gestión de Gimnasio</p>
+        </div>
+        <button class="gymx-modal-close" id="gymx-modal-close" aria-label="Cerrar showcase">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="gymx-modal-body">
+
+        <!-- Overview strip -->
+        <div class="gymx-overview">
+          <p class="gymx-overview-text">
+            Plataforma SaaS premium para la administración integral de gimnasios. Incluye dashboard con
+            KPIs en tiempo real, gestión de miembros, suscripciones, POS con inventario, check-in
+            con feedback visual y calendario de clases. Construida sobre una arquitectura REST API
+            con 9 tablas relacionales y un frontend React 19 con diseño <em>Dark &amp; Neon</em>.
+          </p>
+          <div class="gymx-overview-stack">
+            <span class="gymx-stack-chip">React 19</span>
+            <span class="gymx-stack-chip">Node.js</span>
+            <span class="gymx-stack-chip">Express 4</span>
+            <span class="gymx-stack-chip">MySQL / InnoDB</span>
+            <span class="gymx-stack-chip">Vite 8</span>
+            <span class="gymx-stack-chip">REST API</span>
+            <span class="gymx-stack-chip">CSS Puro</span>
+          </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="gymx-gallery-section">
+          <div class="gymx-gallery-header">
+            <span class="gymx-gallery-label">Galería del Proyecto</span>
+            <span class="gymx-gallery-count" id="gymx-gallery-count">1 / 4</span>
+          </div>
+
+          <!-- Main image viewer -->
+          <div class="gymx-gallery-main">
+            <button class="gymx-gallery-nav gymx-gallery-nav--prev" id="gymx-prev" aria-label="Imagen anterior">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="gymx-gallery-viewport" id="gymx-gallery-viewport">
+              <!-- Images are rendered here by JavaScript -->
+            </div>
+
+            <button class="gymx-gallery-nav gymx-gallery-nav--next" id="gymx-next" aria-label="Siguiente imagen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <!-- Caption area -->
+          <div class="gymx-caption" id="gymx-caption">
+            <!-- Caption is rendered here by JavaScript -->
+          </div>
+
+          <!-- Thumbnail strip -->
+          <div class="gymx-thumbnails" id="gymx-thumbnails" role="tablist" aria-label="Miniaturas de imagen">
+            <!-- Thumbnails are rendered here by JavaScript -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="script.js?v=2"></script>
